@@ -1,6 +1,6 @@
 ## 💻 Hello World Project in JavaScript with Docker 💻
 
-This project creates a basic application in JavaScript that prints "Hello, World!" to the console. The application is dockerized to make it easy to run and deploy on Docker Hub.
+This project creates a basic JavaScript application that prints "Hello World" to a web page and console. The application is dockerized so it is easy to run and deploy on Docker Hub.
 
 ## 📰 Description
 
