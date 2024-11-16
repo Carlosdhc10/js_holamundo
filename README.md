@@ -1,126 +1,129 @@
-## 💻 Hello World Project in JavaScript with Docker 💻
+## 🌐 JavaScript Hello World Project 🌐
 
-This project creates a basic JavaScript application that prints "Hello World" to a web page and console. The application is dockerized so it is easy to run and deploy on Docker Hub.
+This project creates a simple web application in JavaScript that displays a "Hello World" message. It is configured to be deployed on Heroku using the static buildpack.
 
 ## 📰 Description
 
-This project uses JavaScript to display a "Hello, World!" message in the console. Docker simplifies the creation of an image and its deployment to other environments, such as Docker Hub.
+The project includes a basic HTML file that loads a JavaScript script to display "Hello World" in the browser console, as an alert, and directly on the webpage. This project is perfect for learning the basics of web development and cloud deployment.
 
-## 🎪 Project Structure
+## 🎯 Project Structure
 
-The project structure is as follows:
-
-Dockerfile
-
-Script.js
+Js_Holamundo/
 
 index.html
 
-## 📖 Requirements
+Script.js
 
-Docker: Make sure you have Docker installed to build and run the application in a container.
+static.json
 
-Node.js: Required to run the JavaScript file inside the container.
+- index.html: The main HTML file that loads the JavaScript script.
+
+- Script.js: JavaScript file containing the code to display "Hello World."
+
+- static.json: Configuration file for Heroku and the static buildpack.
+
+## 📋 Prerequisites
+
+Ensure the following programs are installed on your system:
+
+Git: To clone and manage the repository.
+
+Heroku CLI: To deploy the project to Heroku.
+
+Text Editor: We recommend Visual Studio Code.
 
 ## 🔨 Installation
 
-1.- Clone the Repository
+### 1. Clone the Repository
 
-Clone the repository to your local machine with the following command:
+Clone the repository to your local machine:
 
 ```bash
-https://github.com/Carlosdhc10/js_holamundo.git
+git clone https://github.com/your-username/Js_Holamundo.git
 ```
 
-2.- Navigate to the Project Directory
-
-Go to the project directory with:
+2. Navigate to the Project Directory
+   
+Go to the project directory:
 
 ```bash
 cd Js_Holamundo
 ```
 
-## ✈️ Running the Application Locally
+## 🚀 Run the Project Locally
 
-To run the application locally in JavaScript, ensure you have Node.js installed. Then, run the following command:
+Open the index.html file directly in your browser to view the result.
 
-```bash
-node Script.js
-```
-
-This will print "Hello, World!" to the console.
-
-🐳 Building the Docker Image
-
-To build the Docker image, use the following command in the terminal inside the project directory:
+Alternatively, use a local web server. For example, if you have Node.js installed:
 
 ```bash
-docker build -t your_username/hello-world-js:v1 .
+npx serve .
 ```
 
-Once the image is built, run the container with:
+Open your browser and visit http://localhost:5000.
+
+## 🌩️ Deploy to Heroku
+
+### 1. Log In to Heroku
+
+Ensure you have Heroku CLI installed, then run:
 
 ```bash
-docker run --rm your_username/hello-world-js:v1
+heroku login
 ```
 
-## 🎈 Pushing to Docker Hub (Optional)
-
-If you want to share the container on Docker Hub:
-
-1.- Log in to Docker Hub:
+### 2. Create a Heroku App
+   
+Inside the project directory, run:
 
 ```bash
-docker login
+heroku create
 ```
 
-2.- Tag the Image: 
+### 3. Set the Static Buildpack
+   
+Configure the static buildpack for the project:
 
 ```bash
-docker tag your_username/hello-world-js:v1 your_username/hello-world-js
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 ```
 
-3.- Push the Image to Docker Hub:
+### 4. Push the Project to Heroku
+   
+Add the project to a Git repository and deploy it:
 
 ```bash
-docker push your_username/hello-world-js
+git add .
+git commit -m "Deploying Hello World to Heroku"
+git push heroku main
 ```
-## 📈 Deployment on Render (Optional)
 
-To deploy this application on Render, follow these steps:
+### 5. Open the Application
+   
+```bash
+heroku open
+```
 
-1.- Upload the Repository to GitHub (if not already done).
+Open the application in your browser using:
 
-2.- Create a New Web Service on Render:
 
-‼️ Log in to your Render account and select "New" > "Web Service".
-
-‼️ Choose "Connect a GitHub Repository" and select your repository.
-
-3.- Configure the Service:
-
-Set the Build Command to:
+### 6. Check Logs
+   
+If there are any issues, view the application logs:
 
 ```bash
-docker build -t hello-world-js .
+heroku logs --tail
 ```
 
-Set the Start Command to:
+## 💼 Result
 
-```bash
-node index.js
-```
+When accessing your application URL on Heroku, you will see the "Hello World" message in the browser console, as an alert, and on the webpage itself.
 
-Configure other settings as needed (such as region and instance type).
+## 🤝 Contributing
 
-💡 Deploy
+If you'd like to contribute to this project, please fork the repository, create a new branch, and submit a pull request with your improvements.
 
-Render will build and deploy the application. Once completed, your application will be live, and you can view it by accessing the URL provided by Render.
+## 📜 License
 
-## 🎳 Contributing
+This project is open-source. Feel free to modify and use it as a reference for your own projects.
 
-If you'd like to improve the project, feel free to fork it and submit a pull request!
-
-## ©️ License ©️
-
-This README provides all the information needed to run the "Hello World" project in a local environment or deploy it on Docker Hub.
