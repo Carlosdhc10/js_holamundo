@@ -25,8 +25,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Heroku
-        uses: akshnz/heroku-deploy-action@v1.1.0
+        uses: heroku/actions-deploy@v3
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          api_key: ${{ secrets.HEROKU_API_KEY }}
+          app_name: ${{ secrets.HEROKU_APP_NAME }}
+          email: ${{ secrets.HEROKU_EMAIL }}
