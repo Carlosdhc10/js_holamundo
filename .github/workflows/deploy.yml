@@ -3,7 +3,7 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # O la rama que uses para despliegues
+      - main  # O la rama que usas para despliegues
 
 jobs:
   deploy:
@@ -25,8 +25,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Heroku
-        uses: heroku/actions-deploy@v3
+        uses: mohit-kumar/heroku-deploy@v1
         with:
-          api_key: ${{ secrets.HEROKU_API_KEY }}
-          app_name: ${{ secrets.HEROKU_APP_NAME }}
-          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
