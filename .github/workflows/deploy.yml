@@ -34,19 +34,24 @@ jobs:
       - name: Deploy to AWS EC2
         env:
           EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
-          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
         run: |
-          # Conexión SSH a EC2 y despliegue
+          # Guardar la clave privada
           echo "$EC2_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
+          
+          # Deshabilitar la verificación de la clave del host
+          mkdir -p ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile=/dev/null" >> ~/.ssh/config
+
+          # Conexión SSH a EC2 y despliegue
           ssh -i private_key.pem ec2-user@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
             # Detener cualquier contenedor previo
             docker stop $(docker ps -q) || true
             docker rm $(docker ps -a -q) || true
-            
-            # Descargar la nueva imagen desde Docker Hub
+
+            # Descargar la nueva imagen
             docker pull ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-            
+
             # Correr el contenedor con la nueva imagen
             docker run -d -p 80:80 ${{ secrets.DOCKER_USERNAME }}/my-app:latest
           EOF
